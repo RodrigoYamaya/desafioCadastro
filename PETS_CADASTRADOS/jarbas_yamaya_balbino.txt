@@ -1,0 +1,7 @@
+Nome: jarbas yamaya balbino
+Tipo: Cachorro
+Sexo: MACHO
+Endereço: 5 , rio de janeiro , rua das caquizeiras
+Idade: 2
+Peso: 3.9
+Raça: shitzu

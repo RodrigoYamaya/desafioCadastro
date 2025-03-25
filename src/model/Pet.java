@@ -6,22 +6,58 @@ public class Pet {
     private String tipoPet;
     SexoPet sexoPet;
     private String endereco;
-    private Integer idade;
+    private Double idade;
     private Double pesoPet;
     private String petRaca;
 
     private static final String NAO_INFORMADO = "NÃO INFORMADO";
-    private static final String PASTA_PETS = "PETS_CADASTRADOS";
 
-    public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, Integer idade, Double pesoPet, String petRaca) {
+    public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, Double idade, Double pesoPet, String petRaca) {
         this.petNome = (petNome == null || petNome.trim().isEmpty() ? NAO_INFORMADO:petNome);
         this.tipoPet = (tipoPet == null || tipoPet.trim().isEmpty() ? NAO_INFORMADO:tipoPet);
         this.sexoPet = sexoPet;
         this.endereco = endereco == null || endereco.trim().isEmpty()? NAO_INFORMADO:endereco;
-        this.idade = (idade == null) ? 0 : idade;
         this.pesoPet = (pesoPet == null) ? 0.0 : pesoPet ;
         this.petRaca = (petRaca ==  null || petRaca.trim().isEmpty()? NAO_INFORMADO: petRaca);
+
+        if(!this.petRaca.matches("[A-Za-zÀ-ÖØ-öø-ÿ ]+")) {
+            System.out.println("entrada invalida! Digite somente letras. ");
+        }
+
+        //conversão anos para meses
+        double idadeMeses = (idade == null) ? 0 : idade;
+        if (idade > 0 && idadeMeses < 12) {
+            idadeMeses = idade / 12;
+            System.out.printf("[CONVERSÃO] %d meses = %.1f ano(s)%n", idadeMeses, this.idade);
+        } else {
+            idadeMeses = idade / 12;
+        }
+
+
+        if(idadeMeses > 20) {
+            throw new IllegalArgumentException(
+                    String.format("Idade inválida: %d anos. O máximo permitido é 20 anos.", this.idade)
+
+            );
+        }
+        this.idade = idadeMeses;
+
+        if(this.pesoPet < 0.5 || this.pesoPet > 60) {
+            throw new IllegalArgumentException(
+                    String.format("Peso inválido: Deve ser entre 0.5kg e 60kg.", this.pesoPet)
+            );
+        }
+
+
+
+
+
+
+
+
+
     }
+
 
 
     public String getPetNome() {
@@ -56,11 +92,11 @@ public class Pet {
         this.endereco = endereco;
     }
 
-    public Integer getIdade() {
+    public Double getIdade() {
         return idade;
     }
 
-    public void setIdade(Integer idade) {
+    public void setIdade(Double idade) {
         this.idade = idade;
     }
 

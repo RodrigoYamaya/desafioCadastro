@@ -13,10 +13,12 @@ public class FormularioUtil {
                 "1 - Qual o nome e sobrenome do pet?",
                 "2 - Qual o tipo do pet (Cachorro/Gato)?",
                 "3 - Qual o sexo do animal?",
-                "4 - Qual endereço e bairro que ele foi encontrado?",
-                "5 - Qual a idade aproximada do pet?",
-                "6 - Qual o peso aproximado do pet?",
-                "7 - Qual a raça do pet?"
+                "4 - Qual o número da casa?",
+                "5 - Qual a cidade?",
+                "6 - Qual a rua?",
+                "7 - Qual a idade aproximada do pet?",
+                "8 - Qual o peso aproximado do pet?",
+                "9 - Qual a raça do pet?"
 
         ));
 

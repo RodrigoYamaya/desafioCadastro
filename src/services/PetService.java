@@ -19,14 +19,36 @@ public class PetService {
     public static Pet cadastraPet(Scanner scanner) {
 
         List<String> perguntas = ArquivoUtil.lerArquivo();
-        String[] respostas  = new String[perguntas.size()];
+        String[] respostas = new String[perguntas.size()];
 
         for (int i = 0; i < perguntas.size(); i++) {
-            System.out.println(perguntas.get(i) + " ");
+            System.out.println(perguntas.get(i));
             System.out.print("Resposta: ");
-            respostas[i] = scanner.nextLine().trim();
 
-            if(i == 0) {
+
+            if (i == 6) {
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Erro: Idade deve ser um número inteiro. Ex: 5");
+                    scanner.next();
+                    System.out.print("Digite novamente: ");
+                }
+                respostas[i] = String.valueOf(scanner.nextInt());
+                scanner.nextLine();
+            }
+            else if (i == 7) {
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Erro: Peso deve ser um número. Ex: 5.5 ou 5,5");
+                    scanner.next();
+                    System.out.print("Digite novamente: ");
+                }
+                respostas[i] = String.valueOf(scanner.nextDouble());
+                scanner.nextLine();
+            }
+            else {
+                respostas[i] = scanner.nextLine().trim();
+            }
+
+            if (i == 0) {
                 validarNomePet(respostas[i]);
             }
         }
@@ -34,13 +56,14 @@ public class PetService {
         Pet novoPet = new Pet(respostas[0],
                 respostas[1],
                 SexoPet.valueOf(respostas[2].toUpperCase()),
-                respostas[3],
-                Integer.parseInt(respostas[4]),
-                Double.parseDouble(respostas[5]),
-                respostas[6]
+                respostas[3] + " , " + respostas[4] + " , " + respostas[5],
+                Double.parseDouble(respostas[6]),
+                Double.parseDouble(respostas[7]),
+                respostas[8]
 
         );
         salvarPet(novoPet);
+
         return novoPet;
 
 

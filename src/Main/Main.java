@@ -1,6 +1,5 @@
 package Main;
 
-import model.Pet;
 import services.PetService;
 import utils.FormularioUtil;
 
