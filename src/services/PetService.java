@@ -7,6 +7,8 @@ import utils.ArquivoUtil;
 
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.Scanner;
 
 public class PetService {
     private static final String PASTA_PETS = "PETS_CADASTRADOS";
+    private static final DateTimeFormatter DATE_TIME_FORMATTER  = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm");
 
 
     public static Pet cadastraPet(Scanner scanner) {
@@ -57,7 +60,7 @@ public class PetService {
                 respostas[1],
                 SexoPet.valueOf(respostas[2].toUpperCase()),
                 respostas[3] + " , " + respostas[4] + " , " + respostas[5],
-                Double.parseDouble(respostas[6]),
+                Integer.parseInt(respostas[6]),
                 Double.parseDouble(respostas[7]),
                 respostas[8]
 
@@ -81,7 +84,7 @@ public class PetService {
             pastaPets.mkdir();
         }
 
-        String nomeArquivo = PASTA_PETS + File.separator + pet.getPetNome().replaceAll(" ", "_") + ".txt";
+        String nomeArquivo = PASTA_PETS + File.separator + LocalDateTime.now().format(DATE_TIME_FORMATTER) + " - " +  pet.getPetNome().toUpperCase() + ".txt";
 
         ArquivoUtil arquivoUtil = new ArquivoUtil(nomeArquivo);
         arquivoUtil.salvarListaNoArquivo(new ArrayList<>(Arrays.asList(

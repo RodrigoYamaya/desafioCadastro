@@ -1,18 +1,21 @@
 package model;
 
 
+import java.time.LocalDateTime;
+
 public class Pet {
     private String petNome;
     private String tipoPet;
     SexoPet sexoPet;
     private String endereco;
-    private Double idade;
+    private double idade;
     private Double pesoPet;
     private String petRaca;
-
+    private LocalDateTime dataCadastro;
+    
     private static final String NAO_INFORMADO = "NÃO INFORMADO";
 
-    public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, Double idade, Double pesoPet, String petRaca) {
+    public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, double idade, Double pesoPet, String petRaca) {
         this.petNome = (petNome == null || petNome.trim().isEmpty() ? NAO_INFORMADO:petNome);
         this.tipoPet = (tipoPet == null || tipoPet.trim().isEmpty() ? NAO_INFORMADO:tipoPet);
         this.sexoPet = sexoPet;
@@ -24,23 +27,22 @@ public class Pet {
             System.out.println("entrada invalida! Digite somente letras. ");
         }
 
-        //conversão anos para meses
-        double idadeMeses = (idade == null) ? 0 : idade;
-        if (idade > 0 && idadeMeses < 12) {
-            idadeMeses = idade / 12;
-            System.out.printf("[CONVERSÃO] %d meses = %.1f ano(s)%n", idadeMeses, this.idade);
-        } else {
-            idadeMeses = idade / 12;
-        }
-
-
-        if(idadeMeses > 20) {
+        if (idade > 20) {
             throw new IllegalArgumentException(
-                    String.format("Idade inválida: %d anos. O máximo permitido é 20 anos.", this.idade)
-
+                    String.format("Idade inválida: %d anos. O máximo permitido é 20 anos.", idade)
             );
         }
-        this.idade = idadeMeses;
+
+        // Conversão de meses para fração de ano
+        double idadeConvertida = idade;
+
+        if (idade > 0 && idade < 12) {
+            idadeConvertida = idade / 12.0;  // A conversão de meses para anos
+
+        }
+
+        this.idade = idadeConvertida;
+
 
         if(this.pesoPet < 0.5 || this.pesoPet > 60) {
             throw new IllegalArgumentException(
@@ -48,17 +50,7 @@ public class Pet {
             );
         }
 
-
-
-
-
-
-
-
-
     }
-
-
 
     public String getPetNome() {
         return petNome;
@@ -92,11 +84,11 @@ public class Pet {
         this.endereco = endereco;
     }
 
-    public Double getIdade() {
+    public double getIdade() {
         return idade;
     }
 
-    public void setIdade(Double idade) {
+    public void setIdade(double idade) {
         this.idade = idade;
     }
 
@@ -114,6 +106,14 @@ public class Pet {
 
     public void setPetRaca(String petRaca) {
         this.petRaca = petRaca;
+    }
+
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     @Override
