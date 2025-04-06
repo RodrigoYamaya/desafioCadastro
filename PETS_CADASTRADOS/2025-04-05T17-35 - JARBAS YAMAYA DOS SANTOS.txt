@@ -1,0 +1,7 @@
+Nome: jarbas yamaya dos santos
+Tipo: cachorro
+Sexo: MACHO
+Endereço: 80 , rio de janeiro , rua das amoreiras
+Idade: 2
+Peso: 3.0
+Raça: shitzu

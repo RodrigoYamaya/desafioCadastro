@@ -6,6 +6,7 @@ import model.SexoPet;
 import utils.ArquivoUtil;
 
 
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class PetService {
+
+public class CadastrarPet {
     private static final String PASTA_PETS = "PETS_CADASTRADOS";
     private static final DateTimeFormatter DATE_TIME_FORMATTER  = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm");
 
@@ -60,7 +62,7 @@ public class PetService {
                 respostas[1],
                 SexoPet.valueOf(respostas[2].toUpperCase()),
                 respostas[3] + " , " + respostas[4] + " , " + respostas[5],
-                Integer.parseInt(respostas[6]),
+                Double.parseDouble(respostas[6]),
                 Double.parseDouble(respostas[7]),
                 respostas[8]
 
@@ -98,5 +100,11 @@ public class PetService {
         )));
         System.out.println("pet cadastrado com sucesso: " + nomeArquivo);
     }
+
+
+
+
+
+
 
 }

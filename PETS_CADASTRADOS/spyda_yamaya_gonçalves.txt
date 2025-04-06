@@ -1,7 +1,0 @@
-Nome: spyda yamaya gonçalves
-Tipo: gato
-Sexo: FEMEA
-Endereço: campo grande, rio de janeiro
-Idade: 4
-Peso: 3.0
-Raça: indefinida

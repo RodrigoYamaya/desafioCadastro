@@ -8,41 +8,38 @@ public class Pet {
     private String tipoPet;
     SexoPet sexoPet;
     private String endereco;
-    private double idade;
+    private Double idade;
     private Double pesoPet;
     private String petRaca;
     private LocalDateTime dataCadastro;
     
     private static final String NAO_INFORMADO = "NÃO INFORMADO";
 
-    public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, double idade, Double pesoPet, String petRaca) {
+    public Pet() {
+    }
+
+    public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, Double idade, Double pesoPet, String petRaca) {
         this.petNome = (petNome == null || petNome.trim().isEmpty() ? NAO_INFORMADO:petNome);
         this.tipoPet = (tipoPet == null || tipoPet.trim().isEmpty() ? NAO_INFORMADO:tipoPet);
         this.sexoPet = sexoPet;
         this.endereco = endereco == null || endereco.trim().isEmpty()? NAO_INFORMADO:endereco;
         this.pesoPet = (pesoPet == null) ? 0.0 : pesoPet ;
-        this.petRaca = (petRaca ==  null || petRaca.trim().isEmpty()? NAO_INFORMADO: petRaca);
+        this.petRaca = (petRaca == null || petRaca.trim().isEmpty()) ? "NÃO INFORMADO" : petRaca.trim();
 
         if(!this.petRaca.matches("[A-Za-zÀ-ÖØ-öø-ÿ ]+")) {
             System.out.println("entrada invalida! Digite somente letras. ");
         }
 
-        if (idade > 20) {
-            throw new IllegalArgumentException(
-                    String.format("Idade inválida: %d anos. O máximo permitido é 20 anos.", idade)
-            );
+        if (idade == null) {
+            this.idade = 0.0;
+        } else {
+            if (idade > 20) {
+                throw new IllegalArgumentException(
+                        String.format("Idade inválida: %.1f anos. O máximo permitido é 20 anos.", idade)
+                );
+            }
+            this.idade = idade;
         }
-
-        // Conversão de meses para fração de ano
-        double idadeConvertida = idade;
-
-        if (idade > 0 && idade < 12) {
-            idadeConvertida = idade / 12.0;  // A conversão de meses para anos
-
-        }
-
-        this.idade = idadeConvertida;
-
 
         if(this.pesoPet < 0.5 || this.pesoPet > 60) {
             throw new IllegalArgumentException(
@@ -84,11 +81,11 @@ public class Pet {
         this.endereco = endereco;
     }
 
-    public double getIdade() {
+    public Double getIdade() {
         return idade;
     }
 
-    public void setIdade(double idade) {
+    public void setIdade(Double idade) {
         this.idade = idade;
     }
 
@@ -118,8 +115,9 @@ public class Pet {
 
     @Override
     public String toString() {
-        return String.format("Pet [Nome: %s, Tipo: %s, Sexo: %s, Endereço: %s, Idade: %d, Peso: %.2f, Raça: %s]",
-                petNome, tipoPet, sexoPet, endereco, idade, pesoPet, petRaca);
+        return String.format("Pet [Nome: %s, Tipo: %s, Sexo: %s, Endereço: %s, Idade: %s, Peso: %.2f, Raça: %s]",
+                petNome, tipoPet, sexoPet, endereco, (idade == null ? "N/A" : idade), pesoPet, petRaca);
+
     }
 }
 

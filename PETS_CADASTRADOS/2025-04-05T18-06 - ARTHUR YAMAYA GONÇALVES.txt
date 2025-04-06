@@ -1,7 +1,7 @@
 Nome: arthur yamaya gonçalves
 Tipo: gato
 Sexo: MACHO
-Endereço: 5 , Rio de janeiro , rua das caquizeiras
-Idade: 5
-Peso: 3.0
+Endereço: 80 , rio de janeiro , rua das amoreiras
+Idade: 6.0
+Peso: 4.0
 Raça: indefinida

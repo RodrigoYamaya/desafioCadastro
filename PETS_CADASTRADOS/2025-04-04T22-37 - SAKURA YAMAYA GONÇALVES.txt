@@ -1,0 +1,7 @@
+Nome: sakura yamaya gonçalves
+Tipo: gato
+Sexo: FEMEA
+Endereço: 5 , rio de janeiro , rua das caquizeiras
+Idade: 16
+Peso: 2.0
+Raça: indefinida

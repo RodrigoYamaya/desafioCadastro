@@ -1,7 +1,0 @@
-Nome: naruto dos santos yamaya
-Tipo: gato
-Sexo: MACHO
-Endereço: 5 , rio de janeiro , @
-Idade: 5
-Peso: 5.0
-Raça: indefinida

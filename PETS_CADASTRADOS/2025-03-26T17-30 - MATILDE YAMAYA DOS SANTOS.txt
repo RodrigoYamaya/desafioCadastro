@@ -2,6 +2,6 @@ Nome: matilde yamaya dos santos
 Tipo: cachorro
 Sexo: FEMEA
 Endereço: 90 , rio de janeiro , rua das amoreiras
-Idade: 0.5
+Idade: 6
 Peso: 4.0
 Raça: salsicha

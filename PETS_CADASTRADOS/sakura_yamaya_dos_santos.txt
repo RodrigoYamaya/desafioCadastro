@@ -1,7 +1,0 @@
-Nome: sakura yamaya dos santos
-Tipo: gato
-Sexo: FEMEA
-Endereço: campo grande
-Idade: 5
-Peso: 3.0
-Raça: indefinida
