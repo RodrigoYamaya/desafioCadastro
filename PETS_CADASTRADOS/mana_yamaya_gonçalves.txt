@@ -1,7 +1,7 @@
-Nome: sakura yamaya gonçalves
+nome: mana yamaya gonçalves
 Tipo: gato
 Sexo: FEMEA
 Endereço: 5 , rio de janeiro , rua das caquizeiras
-Idade: 16
-Peso: 2.0
-Raça: indefinida
+Idade: 6.0
+Peso: 4.0
+Raca: indefinida

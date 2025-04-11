@@ -8,15 +8,15 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class BuscarPet {
+public class BuscarPet  {
 
-    public void rodarMenuBusca() {
+    public List<Pet> rodarMenuBusca() {
         Scanner scanner = new Scanner(System.in);
         List<Pet> listaPets = ArquivoUtil.lerPetsArquivo();
 
         if (listaPets.isEmpty()) {
             System.out.println("Nenhum pet cadastrado.");
-            return;
+            return List.of();
         }
 
         System.out.println("Digite o tipo de animal para buscar (Cachorro/Gato):");
@@ -29,7 +29,7 @@ public class BuscarPet {
 
         if (petsFiltrados.isEmpty()) {
             System.out.println("Nenhum pet encontrado para o tipo " + tipoAnimal);
-            return;
+            return List.of();
         }
 
         int opcao;
@@ -64,7 +64,7 @@ public class BuscarPet {
             }
 
             if (opcao == 0) {
-                return;
+                return petsFiltrados;
             }
 
             List<Pet> resultadoBusca = aplicarFiltro(petsFiltrados, opcao, scanner);
@@ -224,4 +224,6 @@ public class BuscarPet {
         return Normalizer.normalize(texto, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
+
+
 }

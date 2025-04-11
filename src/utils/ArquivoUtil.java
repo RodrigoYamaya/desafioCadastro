@@ -5,28 +5,16 @@ import model.SexoPet;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ArquivoUtil {
 
-    private static String caminhoArquivo;
     private static final String CAMINHO_PASTA = "PETS_CADASTRADOS";
+    private static String caminhoArquivo;
 
     public ArquivoUtil(String caminhoArquivo) {
         this.caminhoArquivo = caminhoArquivo;
-    }
-
-    public void salvarListaNoArquivo(List<String> lista) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoArquivo))) {
-            for (String linha : lista) {
-                bw.write(linha);
-                bw.newLine();
-            }
-            System.out.println("arquivo salvo com sucesso! " + caminhoArquivo);
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar arquivo: " + e.getMessage());
-        }
     }
 
     public static List<String> lerArquivo() {
@@ -121,4 +109,109 @@ public class ArquivoUtil {
 
         return listaPets;
     }
+
+    public static void escritaArquivoPet(Pet pet, String nomeArquivo) {
+        File pasta = new File(CAMINHO_PASTA);
+        if (!pasta.exists()) {
+            pasta.mkdir();
+        }
+
+        File arquivo = new File(pasta, nomeArquivo);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo))) {
+            writer.write("nome: " + pet.getPetNome());
+            writer.newLine();
+            writer.write("Tipo: " + pet.getTipoPet());
+            writer.newLine();
+            writer.write("Sexo: " + pet.getSexoPet());
+            writer.newLine();
+            writer.write("Endereço: " + pet.getEndereco());
+            writer.newLine();
+            writer.write("Idade: " + pet.getIdade());
+            writer.newLine();
+            writer.write("Peso: " + pet.getPesoPet());
+            writer.newLine();
+            writer.write("Raca: " + pet.getPetRaca());
+            writer.newLine();
+        } catch (IOException e) {
+            System.out.println("Erro ao escrever o arquivo: " + e.getMessage());
+        }
+    }
+
+
+    public static File encontrarArquivoDoPet(Pet petOrigens) {
+        File pasta = new File(CAMINHO_PASTA);
+        if (!pasta.exists() || !pasta.isDirectory()) {
+            return null;
+        }
+
+        File[] arquivos = pasta.listFiles((dir, name) -> name.endsWith(".txt"));
+
+        if (arquivos != null) {
+            for (File arquivo : arquivos) {
+                try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+                    String linha;
+                    Pet petArquivo = new Pet();
+
+                    while ((linha = br.readLine()) != null) {
+                        linha = linha.trim();
+                        if (linha.isEmpty()) continue;
+
+                        int separator = linha.indexOf(":");
+                        if (separator <= 0) continue;
+
+                        String chave = linha.substring(0, separator).trim().toLowerCase();
+                        String valor = linha.substring(separator + 1).trim();
+
+                        switch (chave) {
+                            case "nome":
+                                petArquivo.setPetNome(valor);
+                                break;
+                            case "endereço":
+                                petArquivo.setEndereco(valor);
+                                break;
+                            case "idade":
+                                petArquivo.setIdade(Double.parseDouble(valor));
+                                break;
+                            case "peso":
+                                petArquivo.setPesoPet(Double.parseDouble(valor));
+                                break;
+                            case "raça":
+                                petArquivo.setPetRaca(valor);
+                                break;
+                        }
+                    }
+
+                    if (
+                            petArquivo.getPetNome().equalsIgnoreCase(petOrigens.getPetNome()) &&
+                                    Objects.equals(petArquivo.getEndereco(), petOrigens.getEndereco()) &&
+                                    Double.compare(petArquivo.getIdade(), petOrigens.getIdade()) == 0 &&
+                                    Double.compare(petArquivo.getPesoPet(), petOrigens.getPesoPet()) == 0 &&
+                                    Objects.equals(petArquivo.getPetRaca(), petOrigens.getPetRaca())
+                    ) {
+                        return arquivo;
+                    }
+
+                } catch (IOException e) {
+                    System.out.println("Erro ao ler o arquivo " + arquivo.getName() + ": " + e.getMessage());
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public void salvarListaNoArquivo(List<String> lista) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoArquivo))) {
+            for (String linha : lista) {
+                bw.write(linha);
+                bw.newLine();
+            }
+            System.out.println("arquivo salvo com sucesso! " + caminhoArquivo);
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar arquivo: " + e.getMessage());
+        }
+
+    }
+
 }

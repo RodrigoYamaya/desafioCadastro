@@ -12,11 +12,13 @@ public class Pet {
     private Double pesoPet;
     private String petRaca;
     private LocalDateTime dataCadastro;
+    private LocalDateTime dataUltimaAtualizacao;
     
     private static final String NAO_INFORMADO = "NÃO INFORMADO";
 
     public Pet() {
     }
+
 
     public Pet(String petNome, String tipoPet, SexoPet sexoPet, String endereco, Double idade, Double pesoPet, String petRaca) {
         this.petNome = (petNome == null || petNome.trim().isEmpty() ? NAO_INFORMADO:petNome);
@@ -47,6 +49,14 @@ public class Pet {
             );
         }
 
+    }
+
+    public LocalDateTime getDataUltimaAtualizacao() {
+        return dataUltimaAtualizacao;
+    }
+
+    public void setDataUltimaAtualizacao(LocalDateTime dataUltimaAtualizacao) {
+        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
 
     public String getPetNome() {
@@ -118,6 +128,16 @@ public class Pet {
         return String.format("Pet [Nome: %s, Tipo: %s, Sexo: %s, Endereço: %s, Idade: %s, Peso: %.2f, Raça: %s]",
                 petNome, tipoPet, sexoPet, endereco, (idade == null ? "N/A" : idade), pesoPet, petRaca);
 
+    }
+
+    public String resumoPet() {
+        return "Nome: " + petNome +
+                ", Tipo: " + tipoPet +
+                ", Sexo: " + sexoPet +
+                ", Idade: " + idade +
+                ", Peso: " + pesoPet +
+                ", Raça: " + petRaca +
+                ", Endereço: " + endereco;
     }
 }
 

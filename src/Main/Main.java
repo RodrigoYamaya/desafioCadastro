@@ -1,10 +1,11 @@
 package Main;
 
-import model.Pet;
 import services.BuscarPet;
 import services.CadastrarPet;
 import services.ListagensPets;
+import services.alterarCadastroPet;
 import utils.FormularioUtil;
+
 
 import java.util.*;
 
@@ -17,6 +18,8 @@ public class Main {
         FormularioUtil.criarFormulario();
         CadastrarPet cadastrarPet = new CadastrarPet();
         BuscarPet buscarPet = new BuscarPet();
+
+
 
         while (true) {
             System.out.println("\n=== MENU PRINCIPAL ===");
@@ -52,6 +55,7 @@ public class Main {
                     break;
 
                 case 2:
+                    alterarCadastroPet.alterarPet();
                     break;
 
                 case 3:

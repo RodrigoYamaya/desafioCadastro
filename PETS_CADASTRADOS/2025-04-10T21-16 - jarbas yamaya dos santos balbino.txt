@@ -1,0 +1,7 @@
+nome: jarbas yamaya dos santos balbino
+Tipo: cachorro
+Sexo: MACHO
+Endereço: rio de janeiro, rua das caquizeiras , 90
+Idade: 3.0
+Peso: 4.0
+Raca: shih tzu

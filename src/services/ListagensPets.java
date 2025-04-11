@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class ListagensPets {
-    public static void listarTodosPets() {
+    public static List<Pet> listarTodosPets() {
         List<Pet> listarTodosPets = ArquivoUtil.lerPetsArquivo();
         if (listarTodosPets.isEmpty()) {
             System.out.println("Nenhum pet cadastrado.");
-            return;
+            return listarTodosPets;
         }
 
-        System.out.println("\n=== Todos os Pets Cadastrados ===");
+        System.out.println("=== Todos os Pets Cadastrados ===");
         for (int i = 0; i < listarTodosPets.size(); i++) {
             Pet pet = listarTodosPets.get(i);
             System.out.printf("%d. %s - %s - %s - %s - %.1f anos - %.1fkg - %s%n",
@@ -27,5 +27,6 @@ public class ListagensPets {
                     Optional.ofNullable(pet.getPesoPet()).orElse(0.0),
                     pet.getPetRaca());
         }
+        return listarTodosPets;
     }
 }
