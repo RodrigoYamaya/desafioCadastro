@@ -24,8 +24,4 @@ public class FormularioUtil {
        arquivoUtil.salvarListaNoArquivo(perguntas);
     }
 
-    public static List<String> lerFormulario() {
-        ArquivoUtil arquivoUtil = new ArquivoUtil(CAMINHO_FORMULARIO);
-        return ArquivoUtil.lerArquivo();
-    }
 }

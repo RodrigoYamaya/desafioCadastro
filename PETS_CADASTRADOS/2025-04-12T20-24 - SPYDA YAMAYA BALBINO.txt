@@ -1,0 +1,7 @@
+Nome: spyda yamaya balbino
+Tipo: gato
+Sexo: FEMEA
+Endereço: 10 , rio de janeiro , rua das caquizeiras
+Idade: 4.0
+Peso: 3.0
+Raça: indefinida

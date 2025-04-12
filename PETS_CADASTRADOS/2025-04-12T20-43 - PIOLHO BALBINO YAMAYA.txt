@@ -1,0 +1,7 @@
+Nome: piolho balbino yamaya
+Tipo: gato
+Sexo: MACHO
+Endereço: 155 , rio de janeiro , rua cesario de melo
+Idade: 19.0
+Peso: 1.5
+Raça: indefinida

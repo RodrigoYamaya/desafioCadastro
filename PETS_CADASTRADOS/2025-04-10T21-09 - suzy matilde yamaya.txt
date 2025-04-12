@@ -1,7 +1,0 @@
-nome: suzy matilde yamaya
-Tipo: cachorro
-Sexo: FEMEA
-Endereço: 80 , rio de janeiro , rua das amoreiras
-Idade: 8.0
-Peso: 6.0
-Raca: null

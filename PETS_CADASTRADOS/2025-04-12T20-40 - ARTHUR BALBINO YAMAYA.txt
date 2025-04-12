@@ -1,7 +1,7 @@
-nome: arthurzinho yamaya gonçalves
+nome: arthur balbino yamaya
 Tipo: gato
 Sexo: MACHO
 Endereço: 80 , rio de janeiro , rua das amoreiras
 Idade: 7.0
 Peso: 5.0
-Raca: null
+Raca: indefinida

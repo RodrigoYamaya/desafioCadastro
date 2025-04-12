@@ -1,9 +1,6 @@
 package Main;
 
-import services.BuscarPet;
-import services.CadastrarPet;
-import services.ListagensPets;
-import services.alterarCadastroPet;
+import services.*;
 import utils.FormularioUtil;
 
 
@@ -22,7 +19,7 @@ public class Main {
 
 
         while (true) {
-            System.out.println("\n=== MENU PRINCIPAL ===");
+            System.out.println("=== MENU PRINCIPAL ===");
             System.out.println("1- Cadastrar um novo pet");
             System.out.println("2- Alterar os dados do pet cadastrado");
             System.out.println("3- Deletar um pet cadastrado");
@@ -59,8 +56,8 @@ public class Main {
                     break;
 
                 case 3:
+                    deletarPet.deletarPet();
                     break;
-
                 case 4:
                     ListagensPets.listarTodosPets();
                     break;

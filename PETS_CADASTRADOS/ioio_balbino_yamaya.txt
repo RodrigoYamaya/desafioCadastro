@@ -1,7 +1,0 @@
-nome: ioio balbino yamaya
-Tipo: gato
-Sexo: MACHO
-Endereço: 90 , rio de janeiro , rua das caquizeiras
-Idade: 8.0
-Peso: 4.0
-Raca: indefinida
